@@ -2,14 +2,36 @@
 
 ## 仓库内容说明
 
-本仓库只包含**源码与配置**。以下内容因体积过大（合计约 3.4 GB）未纳入版本控制，需要本地自行准备：
+本仓库包含**完整源码 + 最终模型权重**，克隆后只差数据即可直接推理。
 
-| 路径 | 内容 | 获取方式 |
+**已包含**：全部代码、配置、`model/60_158+39/` 推理权重（1.4 MB）。
+
+**未包含**（单文件超过 GitHub 100 MB 上限，放在 Release 附件）：
+
+| 内容 | 打包形式 | 获取方式 |
 |---|---|---|
-| `data/train.csv` / `data/test.csv` | 训练/测试数据（各约 150 MB / 200 KB） | 用 `get_stock_data.py` 通过 baostock 公开 API 拉取 `stock_data.csv`，再运行 `data/split_train_test.py` 拆分 |
-| `data/stock_data.csv` | baostock 原始行情（约 86 MB） | `python get_stock_data.py` |
-| `model/60_158+39/` | 训练好的模型（`best_model.pth`、`scaler.pkl`、`config.json` 等） | 运行 `bash train.sh` 重新训练，或从比赛提交包中解压 |
-| `model/*/factor_artifacts/` | 训练/验证集因子快照 CSV（单个 90~260 MB） | 训练时自动生成 |
+| `data/` 训练测试数据（476 MB） | `thu-bdc2026-data.tar.gz`（146 MB） | 从 [v1.0.0 Release](https://github.com/Pratricia/thu-bdc2026-stock-ranking/releases/tag/v1.0.0) 下载，解压到项目根目录 |
+| 提交用 Docker 镜像 | `thu-bdc2026-image.tar.gz`（682 MB） | 同上，`docker load -i` 后可直接运行 |
+
+`model/*/factor_artifacts/`（因子快照 CSV，单个 90~260 MB）、`model/*/log/`（TensorBoard 日志）和各实验副本也未入库，需要时运行 `bash train.sh` 自动重新生成。
+
+### 快速开始
+
+```bash
+# 1. 克隆（已含模型权重）
+git clone https://github.com/Pratricia/thu-bdc2026-stock-ranking.git
+cd thu-bdc2026-stock-ranking
+
+# 2. 下载并解压数据
+#    从 Release 页面下载 thu-bdc2026-data.tar.gz 后放到项目根目录
+tar -xzf thu-bdc2026-data.tar.gz
+
+# 3. 安装依赖并推理
+python -m pip install -r requirements.txt
+bash test.sh          # 输出 output/result.csv
+```
+
+> 数据也可以自行重建：`python get_stock_data.py` 通过 baostock 公开 API 拉取行情，再运行 `data/split_train_test.py` 按日期拆分。
 
 训练与推理的默认路径见 `code/src/config.py` 中的 `data_path` / `output_dir`，均相对项目根目录。
 
