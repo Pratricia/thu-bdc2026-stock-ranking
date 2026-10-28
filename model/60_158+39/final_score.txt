@@ -1,0 +1,2 @@
+Best epoch: 13
+Best objective: 0.000599

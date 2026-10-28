@@ -1,0 +1,37 @@
+{
+    "name": "equal_top3",
+    "top_k": 3,
+    "weighting": "equal",
+    "temperature": 1.0,
+    "validation_objective": -0.003430481910798696,
+    "validation_return": 0.002440719230799004,
+    "validation_mode": "rolling",
+    "strategy_selection_mode": "risk_adjusted",
+    "strategy_risk_lambda": 0.2,
+    "rank_ic_mean": 0.013437025658852362,
+    "rank_ic_ir": 0.37105901110385364,
+    "validation_folds": [
+        {
+            "name": "fold_1",
+            "start_date": "2025-10-29",
+            "end_date": "2025-11-25"
+        },
+        {
+            "name": "fold_2",
+            "start_date": "2025-11-26",
+            "end_date": "2025-12-23"
+        },
+        {
+            "name": "fold_3",
+            "start_date": "2025-12-24",
+            "end_date": "2026-01-22"
+        },
+        {
+            "name": "fold_4",
+            "start_date": "2026-01-23",
+            "end_date": "2026-02-27"
+        }
+    ],
+    "reselected_at": "2026-03-27 10:50:52",
+    "source": "validation_reselect"
+}

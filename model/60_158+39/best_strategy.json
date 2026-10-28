@@ -1,0 +1,439 @@
+{
+    "name": "softmax_top3",
+    "top_k": 3,
+    "weighting": "softmax",
+    "temperature": 0.6,
+    "validation_objective": 0.0005988658203186342,
+    "validation_return": 0.013195110656808886,
+    "validation_mode": "rolling",
+    "strategy_selection_mode": "risk_adjusted",
+    "strategy_risk_lambda": 0.5,
+    "rank_ic_mean": 0.003066357494337564,
+    "rank_ic_ir": -744192662.70077,
+    "validation_folds": [
+        {
+            "name": "fold_1",
+            "start_date": "2025-10-22",
+            "end_date": "2025-11-25",
+            "purge_days": 0,
+            "embargo_days": 5,
+            "label_horizon": 5
+        },
+        {
+            "name": "fold_2",
+            "start_date": "2025-12-03",
+            "end_date": "2026-01-08",
+            "purge_days": 0,
+            "embargo_days": 5,
+            "label_horizon": 5
+        },
+        {
+            "name": "fold_3",
+            "start_date": "2026-01-16",
+            "end_date": "2026-02-27",
+            "purge_days": 0,
+            "embargo_days": 5,
+            "label_horizon": 5
+        },
+        {
+            "name": "fold_4",
+            "start_date": "2026-03-09",
+            "end_date": "2026-04-13",
+            "purge_days": 0,
+            "embargo_days": 5,
+            "label_horizon": 5
+        },
+        {
+            "name": "fold_5",
+            "start_date": "2026-04-21",
+            "end_date": "2026-05-28",
+            "purge_days": 0,
+            "embargo_days": 5,
+            "label_horizon": 5
+        },
+        {
+            "name": "fold_6",
+            "start_date": "2026-06-05",
+            "end_date": "2026-07-10",
+            "purge_days": 0,
+            "embargo_days": 5,
+            "label_horizon": 5
+        }
+    ],
+    "validation_metrics": {
+        "return_equal_top3": 0.012817604977282742,
+        "return_equal_top3_std": 0.02450276293006805,
+        "return_equal_top3_risk_adjusted": 0.0005662235122487145,
+        "return_softmax_top3": 0.013195110656808886,
+        "return_softmax_top3_std": 0.0251924896729805,
+        "return_softmax_top3_risk_adjusted": 0.0005988658203186342,
+        "return_equal_top5": 0.007330504786555788,
+        "return_equal_top5_std": 0.0174831135624326,
+        "return_equal_top5_risk_adjusted": -0.0014110519946605093,
+        "return_softmax_top5": 0.008732686575967818,
+        "return_softmax_top5_std": 0.019393484362781797,
+        "return_softmax_top5_risk_adjusted": -0.0009640556054230821,
+        "oracle_top5_equal": 0.1453781779412003,
+        "rank_ic_mean": 0.003066357494337564,
+        "rank_ic_std": 0.08055833415138522,
+        "rank_ic_ir": -744192662.70077,
+        "rank_loss": 5.253752458663214,
+        "vol_aux_loss": 0.6502851446469625,
+        "vol_mae": 1.0848596748851596
+    },
+    "validation_strategy_summary": "equal_top3=mean:0.0128|std:0.0245|ra:0.0006, softmax_top3=mean:0.0132|std:0.0252|ra:0.0006, equal_top5=mean:0.0073|std:0.0175|ra:-0.0014, softmax_top5=mean:0.0087|std:0.0194|ra:-0.0010",
+    "validation_strategy_comparison": [
+        {
+            "name": "equal_top3",
+            "top_k": 3,
+            "weighting": "equal",
+            "mean_return": 0.012817604977282742,
+            "return_std": 0.02450276293006805,
+            "risk_adjusted_return": 0.0005662235122487145
+        },
+        {
+            "name": "softmax_top3",
+            "top_k": 3,
+            "weighting": "softmax",
+            "mean_return": 0.013195110656808886,
+            "return_std": 0.0251924896729805,
+            "risk_adjusted_return": 0.0005988658203186342
+        },
+        {
+            "name": "equal_top5",
+            "top_k": 5,
+            "weighting": "equal",
+            "mean_return": 0.007330504786555788,
+            "return_std": 0.0174831135624326,
+            "risk_adjusted_return": -0.0014110519946605093
+        },
+        {
+            "name": "softmax_top5",
+            "top_k": 5,
+            "weighting": "softmax",
+            "mean_return": 0.008732686575967818,
+            "return_std": 0.019393484362781797,
+            "risk_adjusted_return": -0.0009640556054230821
+        }
+    ],
+    "validation_fold_diagnostics": [
+        {
+            "name": "fold_1",
+            "start_date": "2025-10-22",
+            "end_date": "2025-11-25",
+            "num_samples": 25,
+            "loss": 5.378577845437186,
+            "best_candidate": {
+                "name": "softmax_top3",
+                "top_k": 3,
+                "weighting": "softmax"
+            },
+            "best_score": -0.0034979616095503862,
+            "strategy_comparison": [
+                {
+                    "name": "equal_top3",
+                    "top_k": 3,
+                    "weighting": "equal",
+                    "mean_return": 0.005905193376487919,
+                    "return_std": 0.019855774783582216,
+                    "risk_adjusted_return": -0.004022694015303189
+                },
+                {
+                    "name": "softmax_top3",
+                    "top_k": 3,
+                    "weighting": "softmax",
+                    "mean_return": 0.006996985541523567,
+                    "return_std": 0.020989894302147906,
+                    "risk_adjusted_return": -0.0034979616095503862
+                },
+                {
+                    "name": "equal_top5",
+                    "top_k": 5,
+                    "weighting": "equal",
+                    "mean_return": 0.0023121084419212173,
+                    "return_std": 0.01603352766438653,
+                    "risk_adjusted_return": -0.005704655390272048
+                },
+                {
+                    "name": "softmax_top5",
+                    "top_k": 5,
+                    "weighting": "softmax",
+                    "mean_return": 0.003704885004221329,
+                    "return_std": 0.016999836187689354,
+                    "risk_adjusted_return": -0.00479503308962335
+                }
+            ]
+        },
+        {
+            "name": "fold_2",
+            "start_date": "2025-12-03",
+            "end_date": "2026-01-08",
+            "num_samples": 25,
+            "loss": 5.410368715013776,
+            "best_candidate": {
+                "name": "equal_top3",
+                "top_k": 3,
+                "weighting": "equal"
+            },
+            "best_score": -0.013447779815990036,
+            "strategy_comparison": [
+                {
+                    "name": "equal_top3",
+                    "top_k": 3,
+                    "weighting": "equal",
+                    "mean_return": -0.006368277727493218,
+                    "return_std": 0.014159004176993641,
+                    "risk_adjusted_return": -0.013447779815990036
+                },
+                {
+                    "name": "softmax_top3",
+                    "top_k": 3,
+                    "weighting": "softmax",
+                    "mean_return": -0.007093636319041252,
+                    "return_std": 0.0157426893547805,
+                    "risk_adjusted_return": -0.0149649809964315
+                },
+                {
+                    "name": "equal_top5",
+                    "top_k": 5,
+                    "weighting": "equal",
+                    "mean_return": -0.008799215811969978,
+                    "return_std": 0.01124229154718381,
+                    "risk_adjusted_return": -0.014420361585561883
+                },
+                {
+                    "name": "softmax_top5",
+                    "top_k": 5,
+                    "weighting": "softmax",
+                    "mean_return": -0.008812420120063637,
+                    "return_std": 0.012603389968966492,
+                    "risk_adjusted_return": -0.015114115104546882
+                }
+            ]
+        },
+        {
+            "name": "fold_3",
+            "start_date": "2026-01-16",
+            "end_date": "2026-02-27",
+            "num_samples": 25,
+            "loss": 5.526669093540737,
+            "best_candidate": {
+                "name": "equal_top5",
+                "top_k": 5,
+                "weighting": "equal"
+            },
+            "best_score": -0.005486342877049082,
+            "strategy_comparison": [
+                {
+                    "name": "equal_top3",
+                    "top_k": 3,
+                    "weighting": "equal",
+                    "mean_return": 0.001132827900749232,
+                    "return_std": 0.023144377832485467,
+                    "risk_adjusted_return": -0.0104393610154935
+                },
+                {
+                    "name": "softmax_top3",
+                    "top_k": 3,
+                    "weighting": "softmax",
+                    "mean_return": 0.0013617940546412552,
+                    "return_std": 0.02426880750360406,
+                    "risk_adjusted_return": -0.010772609697160778
+                },
+                {
+                    "name": "equal_top5",
+                    "top_k": 5,
+                    "weighting": "equal",
+                    "mean_return": 0.0016961898155776517,
+                    "return_std": 0.014365065385253468,
+                    "risk_adjusted_return": -0.005486342877049082
+                },
+                {
+                    "name": "softmax_top5",
+                    "top_k": 5,
+                    "weighting": "softmax",
+                    "mean_return": 0.0017241397456798171,
+                    "return_std": 0.016342568362311828,
+                    "risk_adjusted_return": -0.006447144435476097
+                }
+            ]
+        },
+        {
+            "name": "fold_4",
+            "start_date": "2026-03-09",
+            "end_date": "2026-04-13",
+            "num_samples": 25,
+            "loss": 5.220127310071673,
+            "best_candidate": {
+                "name": "softmax_top3",
+                "top_k": 3,
+                "weighting": "softmax"
+            },
+            "best_score": 0.03310838401419244,
+            "strategy_comparison": [
+                {
+                    "name": "equal_top3",
+                    "top_k": 3,
+                    "weighting": "equal",
+                    "mean_return": 0.03930418071935752,
+                    "return_std": 0.015232898579431057,
+                    "risk_adjusted_return": 0.03168773142964199
+                },
+                {
+                    "name": "softmax_top3",
+                    "top_k": 3,
+                    "weighting": "softmax",
+                    "mean_return": 0.041005617240443826,
+                    "return_std": 0.01579446645250277,
+                    "risk_adjusted_return": 0.03310838401419244
+                },
+                {
+                    "name": "equal_top5",
+                    "top_k": 5,
+                    "weighting": "equal",
+                    "mean_return": 0.030142649209925106,
+                    "return_std": 0.01339948907814023,
+                    "risk_adjusted_return": 0.023442904670854994
+                },
+                {
+                    "name": "softmax_top5",
+                    "top_k": 5,
+                    "weighting": "softmax",
+                    "mean_return": 0.03240789286792278,
+                    "return_std": 0.014026949816929537,
+                    "risk_adjusted_return": 0.025394417959458015
+                }
+            ]
+        },
+        {
+            "name": "fold_5",
+            "start_date": "2026-04-21",
+            "end_date": "2026-05-28",
+            "num_samples": 25,
+            "loss": 5.3846379688807895,
+            "best_candidate": {
+                "name": "softmax_top3",
+                "top_k": 3,
+                "weighting": "softmax"
+            },
+            "best_score": 0.032448023543973796,
+            "strategy_comparison": [
+                {
+                    "name": "equal_top3",
+                    "top_k": 3,
+                    "weighting": "equal",
+                    "mean_return": 0.04745062720030546,
+                    "return_std": 0.030166908655944815,
+                    "risk_adjusted_return": 0.03236717287233305
+                },
+                {
+                    "name": "softmax_top3",
+                    "top_k": 3,
+                    "weighting": "softmax",
+                    "mean_return": 0.04749551634969456,
+                    "return_std": 0.03009498561144152,
+                    "risk_adjusted_return": 0.032448023543973796
+                },
+                {
+                    "name": "equal_top5",
+                    "top_k": 5,
+                    "weighting": "equal",
+                    "mean_return": 0.024774230467820808,
+                    "return_std": 0.019013507259821476,
+                    "risk_adjusted_return": 0.015267476837910068
+                },
+                {
+                    "name": "softmax_top5",
+                    "top_k": 5,
+                    "weighting": "softmax",
+                    "mean_return": 0.030752755942687924,
+                    "return_std": 0.021613323586389892,
+                    "risk_adjusted_return": 0.019946094149492978
+                }
+            ]
+        },
+        {
+            "name": "fold_6",
+            "start_date": "2026-06-05",
+            "end_date": "2026-07-10",
+            "num_samples": 25,
+            "loss": 5.382475921085903,
+            "best_candidate": {
+                "name": "equal_top5",
+                "top_k": 5,
+                "weighting": "equal"
+            },
+            "best_score": -0.021565333623845107,
+            "strategy_comparison": [
+                {
+                    "name": "equal_top3",
+                    "top_k": 3,
+                    "weighting": "equal",
+                    "mean_return": -0.010518921605710472,
+                    "return_std": 0.04445761355197113,
+                    "risk_adjusted_return": -0.03274772838169603
+                },
+                {
+                    "name": "softmax_top3",
+                    "top_k": 3,
+                    "weighting": "softmax",
+                    "mean_return": -0.010595612926408648,
+                    "return_std": 0.04426409481340622,
+                    "risk_adjusted_return": -0.032727660333111766
+                },
+                {
+                    "name": "equal_top5",
+                    "top_k": 5,
+                    "weighting": "equal",
+                    "mean_return": -0.006142933403940073,
+                    "return_std": 0.030844800439810065,
+                    "risk_adjusted_return": -0.021565333623845107
+                },
+                {
+                    "name": "softmax_top5",
+                    "top_k": 5,
+                    "weighting": "softmax",
+                    "mean_return": -0.007381133984641305,
+                    "return_std": 0.0347748382544037,
+                    "risk_adjusted_return": -0.024768553111843155
+                }
+            ]
+        }
+    ],
+    "validation_regime_summary": {
+        "fold_count": 6,
+        "selection_mode": "risk_adjusted",
+        "best_candidate_win_counts": {
+            "equal_top3": 1,
+            "softmax_top3": 3,
+            "equal_top5": 2,
+            "softmax_top5": 0
+        },
+        "positive_return_fold_count": 4,
+        "negative_return_fold_count": 2,
+        "flat_return_fold_count": 0,
+        "average_best_score": 0.003593164938621938,
+        "average_best_return": 0.014113849635967719,
+        "average_score_spread": 0.0011938064129901503,
+        "dominant_strategy": "softmax_top3",
+        "best_fold": {
+            "name": "fold_4",
+            "start_date": "2026-03-09",
+            "end_date": "2026-04-13",
+            "best_candidate": "softmax_top3",
+            "best_score": 0.03310838401419244,
+            "best_return": 0.041005617240443826
+        },
+        "worst_fold": {
+            "name": "fold_6",
+            "start_date": "2026-06-05",
+            "end_date": "2026-07-10",
+            "best_candidate": "equal_top5",
+            "best_score": -0.021565333623845107,
+            "best_return": -0.006142933403940073
+        }
+    },
+    "source": "training_validation",
+    "best_epoch": 13,
+    "saved_at": "2026-08-01 10:18:39"
+}

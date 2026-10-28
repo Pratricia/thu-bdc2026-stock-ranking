@@ -22,12 +22,22 @@ venv/
 /data/data_manifest_dataset_build.json
 
 # ============================================================
-# 训练产物 / 推理输出（不入库）
-# model/ 约 2.9GB：best_model.pth、scaler.pkl、config.json
-# 以及 factor_artifacts 下的因子快照 CSV（单个 90~260MB）
-# 和 TensorBoard events 日志
+# 训练产物 / 推理输出
+# 只提交最终模型 model/60_158+39/ 的推理必需文件（约 1.4MB）：
+#   best_model.pth / scaler.pkl / config.json / active_factors.json
+#   prior_graph_adj.npy / stock_industry_idx.npy / best_strategy.json 等
+# 以下产物单个 90~260MB，超出 GitHub 单文件 100MB 上限，不入库：
+#   factor_artifacts/ 下的因子快照 CSV、log/ 下的 TensorBoard events
+#   各 seed / 消融实验的模型副本
 # ============================================================
-/model/
+/model/*
+!/model/60_158+39/
+/model/60_158+39/factor_artifacts/
+/model/60_158+39/log/
+# 数据源清单：记录的是本机绝对路径，换机器无意义
+/model/60_158+39/data_manifest.json
+/model/60_158+39/data_manifest_predict.json
+
 /factor_artifacts/
 /temp/
 /output/
