@@ -1,0 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+joblib>=1.5.2
+pandas>=2.3.2
+scikit-learn>=1.7.2
+ta-lib>=0.6.8
+tensorboardX>=2.6.4
+torch>=2.6.0
+tqdm>=4.67.1
+pyyaml>=6.0.2
+numpy>=2.0.0
+scipy>=1.14.0

@@ -1,0 +1,13 @@
+services:
+  app:
+    image: bdc2026:latest
+    pull_policy: never
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./temp:/app/temp
+    working_dir: /app
+    command: ["/bin/bash", "-c", "/bin/bash /app/data/run.sh && sleep infinity"]
+    mem_limit: 8g
+    memswap_limit: 8g
+    cpus: 8.0

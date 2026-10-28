@@ -1,0 +1,83 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg-info
+dist
+build
+*.egg
+
+# Virtual environments
+.venv
+venv
+env
+ENV
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Git
+.git
+.gitignore
+.gitmodules
+
+# Data (只保留训练和测试数据，其他数据文件不打包)
+data/*
+!data/train.csv
+!data/test.csv
+
+# Temp files
+temp/*
+!temp/.gitkeep
+
+# Output (通过docker-compose挂载，不打包进镜像)
+output/*
+!output/.gitkeep
+
+# Model (只保留最终版本，其他不打包)
+model/*
+!model/60_158+39/
+!model/60_158+39/**
+
+# Other
+.agents
+asset
+docs
+factor_artifacts
+*.md.bak
+*.bat
+*.sh.bak
+analyze_returns.py
+get_stock_data.py
+get_stock_data_illustration.txt
+GUIDE.md
+AGENTS.md
+EMAIL_TEMPLATE.txt
+build_submission.*
+generate_report.sh
+factor.sh
+*.tar
+*.tar.gz
+*.zip
+*.png
+*.jpg
+*.jpeg
+.git
+.python-version
+config/
+test/
+uv.lock
+pyproject.toml
+Dockerfile
+Dockerfile.slim
+requirements_minimal.txt
+docker-compose.yml
+.dockerignore
+tensorboard.sh
+git

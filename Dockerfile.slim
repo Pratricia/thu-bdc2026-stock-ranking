@@ -1,0 +1,60 @@
+FROM python:3.12-slim-bookworm AS talib-builder
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources && \
+    sed -i 's/security.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources && \
+    apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    make \
+    wget \
+    tar \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN wget -q https://mirrors.tuna.tsinghua.edu.cn/ta-lib/ta-lib-0.4.0-src.tar.gz -O ta-lib-0.4.0-src.tar.gz || \
+    wget -q http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz -O ta-lib-0.4.0-src.tar.gz && \
+    tar -xzf ta-lib-0.4.0-src.tar.gz && \
+    cd ta-lib && \
+    ./configure --prefix=/usr && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf ta-lib ta-lib-0.4.0-src.tar.gz
+
+FROM python:3.12-slim-bookworm
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV LD_LIBRARY_PATH="/usr/lib:/usr/local/lib"
+
+RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources && \
+    sed -i 's/security.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources && \
+    apt-get update && apt-get install -y --no-install-recommends \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=talib-builder /usr/lib/libta_lib* /usr/lib/
+COPY --from=talib-builder /usr/include/ta-lib /usr/include/ta-lib
+RUN ldconfig
+
+WORKDIR /app
+
+COPY requirements_minimal.txt requirements.txt
+
+RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    --extra-index-url https://download.pytorch.org/whl/cpu \
+    torch==2.6.0+cpu \
+    -r requirements.txt
+
+COPY code/ code/
+COPY model/ model/
+COPY init.sh train.sh test.sh README.md ./
+RUN mv README.md readme.md
+
+RUN sed -i 's/\r$//' /app/init.sh /app/train.sh /app/test.sh && \
+    chmod +x /app/init.sh /app/train.sh /app/test.sh && \
+    mkdir -p /app/data /app/output /app/temp
+
+CMD ["sleep", "infinity"]
